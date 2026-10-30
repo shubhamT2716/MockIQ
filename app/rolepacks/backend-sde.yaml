@@ -1,0 +1,95 @@
+slug: backend-sde
+title: Backend Software Engineer
+domain: software
+persona:
+  name: Arjun
+  style: calm, curious senior engineer who follows up on every claim and never gives answers away
+
+levels:
+  FRESHER: {label: "Fresher / new grad", bar: "Solid CS fundamentals, can solve easy-medium problems with guidance, explains own projects clearly."}
+  L1: {label: "SDE 1 (0-2 yrs)", bar: "Solves medium problems independently, writes clean code, understands the frameworks they use, basic design awareness."}
+  L2: {label: "SDE 2 (2-5 yrs)", bar: "Solves medium-hard problems with good complexity analysis, designs classes and mid-size systems, justifies trade-offs, owns features end to end."}
+  L3_SENIOR: {label: "Senior SDE (5+ yrs)", bar: "Designs large-scale systems with failure modes in mind, drives technical decisions across teams, mentors, quantifies trade-offs."}
+
+stacks:
+  java-spring:
+    label: Java / Spring Boot
+    topics: [JVM memory and garbage collection, "Java concurrency (executors, locks, CompletableFuture)", Spring dependency injection and bean lifecycle, Transactions and isolation in Spring, JPA/Hibernate N+1 problem and fetching strategies, "Collections internals (HashMap, ConcurrentHashMap)"]
+  python:
+    label: Python (FastAPI / Django)
+    topics: [The GIL and when threads help, asyncio and the event loop, Generators and iterators, Python memory model and garbage collection, ORM sessions and N+1 queries, Type hints and Pydantic validation]
+  cpp:
+    label: C++
+    topics: [RAII and smart pointers, Move semantics and rvalue references, STL containers and their complexity, Undefined behavior and memory safety, Virtual functions and vtables, Multithreading with std::thread and atomics]
+  c:
+    label: C
+    topics: [Pointers and pointer arithmetic, Stack vs heap memory and malloc/free, Memory leaks and buffer overflows, "Structs, unions and memory layout", Function pointers]
+  go:
+    label: Go
+    topics: [Goroutines and the scheduler, Channels and select, Interfaces and composition, Context cancellation, Error handling patterns]
+  nodejs:
+    label: Node.js
+    topics: [Event loop phases, Promises and async/await error handling, Streams and backpressure, Worker threads vs cluster, Memory leaks in Node]
+
+competencies:
+  problem_understanding: {description: "Clarifies requirements, constraints and edge cases before solving", anchors: {1: "Jumps in without clarifying", 3: "Asks key clarifying questions and restates the problem", 5: "Identifies hidden constraints and edge cases up front"}}
+  approach: {description: "Finds a working approach and improves it", anchors: {1: "No viable approach even with hints", 3: "Reaches a reasonable approach with little help", 5: "Compares approaches and picks optimal one with reasons"}}
+  correctness: {description: "Solution or explanation is technically correct", anchors: {1: "Major errors", 3: "Mostly correct with minor gaps", 5: "Correct and handles edge cases"}}
+  complexity_analysis: {description: "Time/space complexity reasoning", anchors: {1: "Cannot state complexity", 3: "States correct complexity", 5: "Explains derivation and optimisation trade-offs"}}
+  code_quality: {description: "Readable, structured, idiomatic code", anchors: {1: "Hard to follow or no code", 3: "Clean and readable", 5: "Idiomatic, well-structured, testable"}}
+  communication: {description: "Explains thinking clearly and concisely", anchors: {1: "Hard to follow", 3: "Clear most of the time", 5: "Structured, concise, checks understanding"}}
+  technical_depth: {description: "Depth of understanding of concepts and tools", anchors: {1: "Surface-level definitions", 3: "Knows how and why things work", 5: "Knows internals, failure modes and alternatives"}}
+  object_modeling: {description: "Identifies entities, responsibilities and relationships", anchors: {1: "Unclear classes", 3: "Sensible classes and relationships", 5: "Clean abstractions that map well to requirements"}}
+  design_principles: {description: "Applies SOLID and patterns appropriately", anchors: {1: "No principles", 3: "Applies common patterns correctly", 5: "Chooses patterns with justification, avoids over-engineering"}}
+  extensibility: {description: "Design handles change", anchors: {1: "Change requires rewrite", 3: "Handles the asked change with modest edits", 5: "Anticipates change points cleanly"}}
+  architecture: {description: "Coherent high-level system components", anchors: {1: "Missing major components", 3: "Reasonable components and data flow", 5: "Clear, justified architecture aligned with requirements"}}
+  scalability: {description: "Handles growth in load and data", anchors: {1: "No scaling consideration", 3: "Identifies bottlenecks and basic scaling (caching, sharding)", 5: "Quantified capacity plan and targeted scaling"}}
+  reliability: {description: "Failure modes and resilience", anchors: {1: "Ignores failure", 3: "Covers replication and retries", 5: "Systematic failure analysis, degradation, observability"}}
+  trade_off_reasoning: {description: "Compares options against requirements", anchors: {1: "Picks with no justification", 3: "Compares two options on two or more dimensions", 5: "Quantifies impact and states when the choice would flip"}}
+  ownership: {description: "Takes responsibility and drives outcomes", anchors: {1: "Describes team work only", 3: "Clear personal contribution", 5: "Drove outcome end to end, including follow-through"}}
+  impact: {description: "Measurable results", anchors: {1: "No outcomes", 3: "Describes outcomes", 5: "Quantified business or user impact"}}
+  collaboration: {description: "Works well with others and handles conflict", anchors: {1: "Blames others", 3: "Constructive collaboration", 5: "Resolves conflict and lifts others"}}
+  learning: {description: "Reflects and improves", anchors: {1: "No reflection", 3: "Identifies lessons", 5: "Shows changed behaviour from lessons"}}
+
+topics:
+  arrays-hashing: {title: "Arrays and hashing", seed: "Given an array of integers and a target, return indices of two numbers that add up to the target. How would you approach it?", key_points: ["brute force O(n^2)", "hash map O(n)", "duplicates and edge cases"]}
+  sliding-window: {title: "Sliding window", seed: "Find the length of the longest substring without repeating characters. Talk me through your approach.", key_points: ["window with two pointers", "hash set or last-index map", "O(n) time"]}
+  trees-graphs: {title: "Trees and graphs", seed: "Given a grid of 1s and 0s, count the number of islands. How would you solve it?", key_points: ["DFS or BFS", "visited marking", "O(rows*cols)", "union-find alternative"]}
+  heaps: {title: "Heaps and top-k", seed: "Return the k most frequent elements in an array. What's your approach?", key_points: ["frequency map", "min-heap of size k", "bucket sort alternative", "O(n log k)"]}
+  dynamic-programming: {title: "Dynamic programming", seed: "How many distinct ways can you climb n stairs taking 1 or 2 steps at a time? Then, how would you generalise it?", key_points: ["recurrence", "memoization vs tabulation", "space optimisation"]}
+  oop-basics: {title: "OOP fundamentals", seed: "Explain the difference between abstraction and encapsulation with an example from code you've written.", key_points: ["encapsulation hides state", "abstraction hides complexity", "interfaces", "polymorphism"]}
+  dbms-basics: {title: "Databases and indexing", seed: "What happens when you add an index to a table? When would an index hurt you?", key_points: ["B-tree", "faster reads", "slower writes", "selectivity", "composite index order"]}
+  os-basics: {title: "Processes, threads and concurrency", seed: "What's the difference between a process and a thread, and what problems appear when threads share memory?", key_points: ["address space", "race conditions", "locks", "deadlock conditions"]}
+  networking-basics: {title: "How the web works", seed: "Walk me through what happens when you type a URL into the browser and press enter.", key_points: ["DNS", "TCP/TLS handshake", "HTTP request/response", "caching", "rendering"]}
+  object-modeling: {title: "Object modeling", seed: "Let's design a parking lot system. What are the main entities and how do they relate?", key_points: ["requirements first", "entities and responsibilities", "relationships", "spot allocation strategy"]}
+  design-patterns: {title: "Design patterns and SOLID", seed: "Now the parking lot needs different pricing for weekends and EVs. How would you change your design?", key_points: ["strategy pattern", "open/closed principle", "avoid if-else chains"]}
+  concurrency-design: {title: "Concurrency in design", seed: "Two cars try to take the last spot at the same time. What happens in your design?", key_points: ["race condition", "locking or atomic operations", "database constraints"]}
+  estimation: {title: "Requirements and estimation", seed: "Let's design a URL shortener like bit.ly. What requirements and scale would you assume?", key_points: ["functional vs non-functional", "read/write ratio", "QPS and storage estimate"]}
+  api-data-model: {title: "API and data model", seed: "What APIs and data model would you define for it?", key_points: ["create and redirect endpoints", "key generation", "SQL vs NoSQL justification"]}
+  caching: {title: "Caching", seed: "Redirects are 100 times more frequent than creates. How does that change your design?", key_points: ["cache-aside", "eviction policy", "invalidation", "hot keys"]}
+  scaling: {title: "Scaling and partitioning", seed: "Traffic grows 50x in a year. What breaks first and how do you scale it?", key_points: ["horizontal scaling", "sharding key", "replication", "load balancing"]}
+  reliability: {title: "Reliability and failure modes", seed: "Your primary database goes down at peak. What happens and what would you have designed for it?", key_points: ["replication and failover", "graceful degradation", "retries with backoff", "monitoring"]}
+  messaging: {title: "Async processing and queues", seed: "We now need click analytics for every redirect. How would you add that without slowing redirects?", key_points: ["message queue", "async consumers", "at-least-once and idempotency", "batching"]}
+  resume-claims: {title: "Your projects", seed: "Pick the project you are most proud of and walk me through your role and the architecture.", key_points: ["personal contribution", "architecture", "trade-offs", "measurable impact"]}
+  conflict: {title: "Handling conflict", seed: "Tell me about a time you disagreed with a teammate or manager on a technical decision.", key_points: ["situation", "own actions", "outcome", "what they learned"]}
+  ownership-story: {title: "Ownership and impact", seed: "Tell me about something you owned end to end that you're proud of.", key_points: ["scope", "own decisions", "measurable result"]}
+  failure-story: {title: "Learning from failure", seed: "Tell me about a time something you shipped broke in production.", key_points: ["what happened", "response", "root cause", "prevention"]}
+
+rounds_by_level:
+  FRESHER:
+    - {type: FUNDAMENTALS, title: "CS fundamentals", duration_min: 25, target_depth: 2, mandatory_topics: [oop-basics, dbms-basics], optional_topics: [os-basics, networking-basics], include_stack_topics: 1, competencies: {technical_depth: 0.5, correctness: 0.3, communication: 0.2}, rules: {max_probes: 2, max_hints: 2}}
+    - {type: DSA, title: "Problem solving", duration_min: 35, target_depth: 2, mandatory_topics: [arrays-hashing], optional_topics: [sliding-window, dynamic-programming], tools: [editor], competencies: {problem_understanding: 0.15, approach: 0.3, correctness: 0.25, complexity_analysis: 0.15, communication: 0.15}, rules: {max_probes: 3, max_hints: 2}}
+    - {type: PROJECT_DEEP_DIVE, title: "Projects and you", duration_min: 20, target_depth: 2, mandatory_topics: [resume-claims], optional_topics: [ownership-story], competencies: {technical_depth: 0.4, ownership: 0.3, communication: 0.3}, rules: {max_probes: 2, max_hints: 1}}
+  L1:
+    - {type: DSA, title: "Problem solving", duration_min: 40, target_depth: 3, mandatory_topics: [arrays-hashing], optional_topics: [sliding-window, trees-graphs, heaps], tools: [editor], competencies: {problem_understanding: 0.15, approach: 0.25, correctness: 0.25, complexity_analysis: 0.15, code_quality: 0.1, communication: 0.1}}
+    - {type: LANGUAGE_DEPTH, title: "Language and framework depth", duration_min: 30, target_depth: 3, include_stack_topics: 3, optional_topics: [dbms-basics, os-basics], competencies: {technical_depth: 0.6, correctness: 0.25, communication: 0.15}}
+    - {type: PROJECT_DEEP_DIVE, title: "Projects and behavioral", duration_min: 30, target_depth: 3, mandatory_topics: [resume-claims], optional_topics: [conflict, failure-story], competencies: {technical_depth: 0.3, ownership: 0.3, impact: 0.2, collaboration: 0.2}}
+  L2:
+    - {type: DSA, title: "Problem solving", duration_min: 45, target_depth: 3, mandatory_topics: [trees-graphs], optional_topics: [sliding-window, heaps, dynamic-programming], tools: [editor], competencies: {problem_understanding: 0.1, approach: 0.25, correctness: 0.25, complexity_analysis: 0.15, code_quality: 0.15, communication: 0.1}}
+    - {type: LLD, title: "Low-level design", duration_min: 45, target_depth: 3, mandatory_topics: [object-modeling, design-patterns], optional_topics: [concurrency-design], tools: [editor], competencies: {problem_understanding: 0.15, object_modeling: 0.35, design_principles: 0.3, extensibility: 0.2}}
+    - {type: HLD, title: "System design", duration_min: 45, target_depth: 4, mandatory_topics: [estimation, api-data-model, caching, scaling], optional_topics: [reliability, messaging], tools: [notes], competencies: {architecture: 0.3, scalability: 0.25, reliability: 0.2, trade_off_reasoning: 0.25}}
+    - {type: PROJECT_DEEP_DIVE, title: "Project deep-dive and behavioral", duration_min: 30, target_depth: 4, mandatory_topics: [resume-claims], optional_topics: [conflict, ownership-story, failure-story], include_stack_topics: 1, competencies: {technical_depth: 0.35, ownership: 0.25, impact: 0.2, collaboration: 0.2}}
+  L3_SENIOR:
+    - {type: HLD, title: "Large-scale system design", duration_min: 50, target_depth: 5, mandatory_topics: [estimation, api-data-model, scaling, reliability], optional_topics: [caching, messaging], tools: [notes], competencies: {architecture: 0.25, scalability: 0.25, reliability: 0.25, trade_off_reasoning: 0.25}, rules: {max_probes: 4, max_hints: 1}}
+    - {type: LLD, title: "Design and code quality", duration_min: 40, target_depth: 4, mandatory_topics: [object-modeling, design-patterns, concurrency-design], tools: [editor], competencies: {object_modeling: 0.3, design_principles: 0.35, extensibility: 0.35}}
+    - {type: PROJECT_DEEP_DIVE, title: "Architecture of your past work", duration_min: 40, target_depth: 5, mandatory_topics: [resume-claims], optional_topics: [failure-story, conflict], include_stack_topics: 1, competencies: {technical_depth: 0.35, trade_off_reasoning: 0.25, ownership: 0.2, impact: 0.2}, rules: {max_probes: 4, max_hints: 1}}

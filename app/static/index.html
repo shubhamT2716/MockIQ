@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MockIQ: practice interviews</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+<header class="topbar">
+  <a class="brand" href="/" aria-label="MockIQ home">Mock<span>IQ</span></a>
+  <nav id="mainNav" class="main-nav" hidden>
+    <a href="#/dashboard" data-nav="dashboard">Dashboard</a>
+    <a href="#/new" data-nav="new">New interview</a>
+  </nav>
+  <div id="roundRail" class="round-rail" aria-label="Interview rounds"></div>
+  <div class="top-actions">
+    <span id="userName" class="user-name"></span>
+    <button id="logoutBtn" class="ghost" hidden>Sign out</button>
+    <span id="timer" class="timer" aria-live="off"></span>
+    <button id="endBtn" class="ghost" hidden>End interview</button>
+  </div>
+</header>
+
+<main>
+  <!-- Auth -->
+  <section id="auth" class="auth view" hidden>
+    <h1 id="authTitle">Sign in to keep your progress.</h1>
+    <p class="lede">Your interviews, scores and weak topics are saved to your account so every mock builds on the last one.</p>
+    <p id="authHint" class="hint" hidden></p>
+    <form id="authForm" novalidate>
+      <label id="nameRow" class="field">Name<input id="authName" autocomplete="name" maxlength="100"></label>
+      <label class="field">Email<input id="authEmail" type="email" autocomplete="email" maxlength="254" required></label>
+      <label class="field">Password<input id="authPassword" type="password" autocomplete="current-password" minlength="8" maxlength="200" required></label>
+      <p id="authError" class="error" role="alert"></p>
+      <button id="authSubmit" class="primary" type="submit">Sign in</button>
+    </form>
+    <p class="switch"><span id="authSwitchText">New here?</span> <a id="authSwitch" href="#/signup">Create an account</a></p>
+  </section>
+
+  <!-- Dashboard -->
+  <section id="dashboard" class="dashboard view" hidden>
+    <div id="dashBody"></div>
+  </section>
+
+  <!-- Setup -->
+  <section id="setup" class="setup view">
+    <h1>Practice the interview before the interview.</h1>
+    <p class="lede" id="setupLede">An AI interviewer reads your resume, asks follow-ups until it finds the edge of what you know, and tells you exactly what you missed.</p>
+
+    <form id="setupForm" novalidate>
+      <fieldset>
+        <legend>Role</legend>
+        <div id="roleChoices" class="chips" role="radiogroup"></div>
+      </fieldset>
+      <fieldset>
+        <legend>Level</legend>
+        <div id="levelChoices" class="chips" role="radiogroup"></div>
+      </fieldset>
+      <fieldset id="stackField">
+        <legend>Your stack <span class="hint">(pick any)</span></legend>
+        <div id="stackChoices" class="chips"></div>
+      </fieldset>
+      <fieldset>
+        <legend>Rounds</legend>
+        <div id="roundChoices" class="round-list"></div>
+      </fieldset>
+      <fieldset>
+        <legend>Resume <span class="hint">(optional, makes questions personal)</span></legend>
+        <label id="savedResume" class="saved-resume" hidden><input type="checkbox" id="useSaved" checked><span id="savedResumeText"></span></label>
+        <label class="file">
+          <input id="resumeFile" type="file" accept=".pdf,.docx,.txt">
+          <span id="resumeFileLabel">Upload PDF, DOCX or TXT</span>
+        </label>
+        <textarea id="resumeText" rows="4" placeholder="Or paste your resume text here"></textarea>
+      </fieldset>
+      <fieldset>
+        <legend>How do you want to answer?</legend>
+        <div class="chips" role="radiogroup">
+          <label class="chip"><input type="radio" name="mode" value="voice" checked><span>Speak (recommended)</span></label>
+          <label class="chip"><input type="radio" name="mode" value="chat"><span>Type</span></label>
+        </div>
+        <p id="voiceNote" class="hint small"></p>
+      </fieldset>
+      <p id="setupError" class="error" role="alert"></p>
+      <button id="startBtn" class="primary" type="submit">Start interview</button>
+      <p id="setupStatus" class="status" aria-live="polite"></p>
+    </form>
+  </section>
+
+  <!-- Interview -->
+  <section id="interview" class="interview view" hidden>
+    <div class="stage">
+      <div class="presence">
+        <div class="pulse" id="pulse" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+        <div>
+          <p class="interviewer-name" id="interviewerName"></p>
+          <p class="interviewer-state" id="interviewerState" aria-live="polite"></p>
+        </div>
+      </div>
+      <ol id="transcript" class="transcript" aria-live="polite"></ol>
+      <div class="composer">
+        <p id="turnError" class="error" role="alert"></p>
+        <div class="composer-row">
+          <button id="micBtn" class="mic" type="button" aria-pressed="false" aria-label="Start speaking">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 15a3 3 0 0 0 3-3V6a3 3 0 1 0-6 0v6a3 3 0 0 0 3 3Zm5-3a5 5 0 0 1-10 0H5a7 7 0 0 0 6 6.92V21h2v-2.08A7 7 0 0 0 19 12h-2Z"/></svg>
+          </button>
+          <textarea id="answer" rows="2" placeholder="Your answer. Speak or type, then send."></textarea>
+          <button id="sendBtn" class="primary" type="button">Send</button>
+        </div>
+        <div id="autosend" class="autosend" hidden aria-live="polite"><span class="autosend-bar"><b id="autosendFill"></b></span><span id="autosendText"></span></div>
+        <p id="heard" class="heard" aria-live="polite"></p>
+        <div id="voiceControls" class="voice-controls">
+          <label class="toggle"><input type="checkbox" id="handsFree"><span>Hands-free</span></label>
+          <label class="send-after">Send after a
+            <select id="silenceSel" aria-label="Pause length before sending">
+              <option value="2000">2 second</option><option value="3000">3 second</option><option value="5000">5 second</option>
+            </select> pause</label>
+          <details class="cmd-help">
+            <summary>Voice commands</summary>
+            <ul>
+              <li><q>Can you repeat the question?</q></li>
+              <li><q>Give me a minute</q> pauses auto-send until you talk again</li>
+              <li><q>Can I skip this one?</q></li>
+              <li><q>That’s my answer</q> sends right away</li>
+              <li><q>Clear my answer</q> or <q>Start over</q></li>
+              <li><q>Speak slower</q> or <q>Speak faster</q></li>
+              <li><q>End the interview</q> asks you to confirm</li>
+            </ul>
+            <p>Say a command on its own. The same words inside an answer are treated as part of your answer.</p>
+          </details>
+          <span class="hint small kbd-hint">Ctrl + Enter sends</span>
+        </div>
+      </div>
+    </div>
+    <aside id="workpad" class="workpad" hidden>
+      <label id="workpadLabel" for="workpadText">Code editor</label>
+      <textarea id="workpadText" spellcheck="false" placeholder="Write here. The interviewer sees it with your next answer."></textarea>
+    </aside>
+  </section>
+
+  <!-- Report -->
+  <section id="report" class="report view" hidden>
+    <div id="reportPending" class="pending">
+      <div class="pulse thinking" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+      <p>Scoring your interview. Each round is checked three times and every score must point to something you said.</p>
+    </div>
+    <div id="reportBody"></div>
+  </section>
+</main>
+<script src="/static/voice-commands.js"></script>
+<script src="/static/app.js"></script>
+</body>
+</html>

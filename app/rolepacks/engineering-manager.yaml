@@ -1,0 +1,40 @@
+slug: engineering-manager
+title: Engineering Manager / Director
+domain: management
+persona:
+  name: Kavita
+  style: experienced VP of engineering, warm but direct, always asks what you personally decided and what happened next
+
+levels:
+  EM: {label: "Engineering Manager", bar: "Runs a team of 5-10 well: hiring, performance, delivery, stakeholder communication, sound technical judgment."}
+  DIRECTOR: {label: "Director of Engineering", bar: "Leads managers and multiple teams: org design, strategy, cross-org influence, builds leaders, ties engineering to business outcomes."}
+
+stacks: {}
+
+competencies:
+  people_development: {description: "Grows and manages people", anchors: {1: "Generic statements", 3: "Concrete coaching and feedback examples", 5: "Builds leaders, handles hard performance cases decisively and fairly"}}
+  execution: {description: "Delivers reliably", anchors: {1: "Vague process", 3: "Clear planning and tracking with examples", 5: "Predictable delivery across teams with metrics and course correction"}}
+  strategy: {description: "Sets direction tied to business", anchors: {1: "No direction", 3: "Clear team roadmap", 5: "Multi-year vision tied to business outcomes with trade-offs"}}
+  stakeholder_management: {description: "Influences and aligns", anchors: {1: "Escalates everything", 3: "Aligns stakeholders with clear communication", 5: "Builds trust across org, resolves conflicts proactively"}}
+  decision_making: {description: "Quality of judgment", anchors: {1: "Indecisive or arbitrary", 3: "Reasoned decisions", 5: "Fast, well-reasoned decisions with explicit trade-offs and reversibility"}}
+  technical_depth: {description: "Technical judgment", anchors: {1: "Out of touch", 3: "Can evaluate designs", 5: "Shapes architecture and technical strategy"}}
+  communication: {description: "Clear, structured", anchors: {1: "Rambling", 3: "Clear", 5: "Crisp, executive-ready"}}
+
+topics:
+  underperformance: {title: "Managing underperformance", seed: "Tell me about the hardest performance problem you've handled.", key_points: ["early signal", "clear expectations", "support plan", "decision and outcome"]}
+  hiring: {title: "Hiring and the bar", seed: "How do you decide the hiring bar for your team and keep it consistent across interviewers?", key_points: ["rubrics", "calibration", "diversity of panel", "trade-off speed vs quality"]}
+  delivery-slip: {title: "Delivery under pressure", seed: "A key project is going to miss its date by six weeks. Walk me through what you do.", key_points: ["early detection", "options: scope, people, date", "stakeholder communication", "root cause"]}
+  stakeholder-conflict: {title: "Stakeholder conflict", seed: "Product wants features, your engineers want to pay down tech debt. How do you handle it?", key_points: ["data on cost of debt", "shared goals", "negotiated allocation", "follow-up"]}
+  team-growth: {title: "Growing engineers", seed: "How have you helped someone on your team get promoted?", key_points: ["career conversations", "stretch opportunities", "feedback", "sponsorship"]}
+  org-design: {title: "Org design", seed: "You're taking over three teams with overlapping ownership. How would you restructure?", key_points: ["ownership boundaries", "Conway's law", "change management", "metrics"]}
+  tech-strategy: {title: "Technical strategy", seed: "How would you decide between rebuilding a legacy system and incrementally improving it?", key_points: ["cost/risk analysis", "strangler pattern", "business alignment", "reversibility"]}
+  build-vs-buy: {title: "Build vs buy", seed: "Your team wants to build an in-house feature flag system. How do you decide?", key_points: ["core vs context", "total cost of ownership", "vendor risk"]}
+
+rounds_by_level:
+  EM:
+    - {type: LEADERSHIP, title: "People leadership", duration_min: 40, target_depth: 4, mandatory_topics: [underperformance, team-growth, hiring], competencies: {people_development: 0.5, decision_making: 0.3, communication: 0.2}}
+    - {type: LEADERSHIP, title: "Execution and stakeholders", duration_min: 35, target_depth: 4, mandatory_topics: [delivery-slip, stakeholder-conflict], competencies: {execution: 0.4, stakeholder_management: 0.4, communication: 0.2}}
+    - {type: HLD, title: "Technical judgment", duration_min: 30, target_depth: 3, mandatory_topics: [tech-strategy, build-vs-buy], competencies: {technical_depth: 0.5, decision_making: 0.5}}
+  DIRECTOR:
+    - {type: LEADERSHIP, title: "Org and strategy", duration_min: 45, target_depth: 5, mandatory_topics: [org-design, tech-strategy, hiring], competencies: {strategy: 0.4, decision_making: 0.3, people_development: 0.3}, rules: {max_probes: 4, max_hints: 1}}
+    - {type: LEADERSHIP, title: "Cross-org influence", duration_min: 40, target_depth: 5, mandatory_topics: [stakeholder-conflict, delivery-slip, underperformance], competencies: {stakeholder_management: 0.4, execution: 0.3, communication: 0.3}, rules: {max_probes: 4, max_hints: 1}}

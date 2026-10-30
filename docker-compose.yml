@@ -1,0 +1,18 @@
+services:
+  db:
+    image: postgres:16
+    environment:
+      POSTGRES_USER: mockiq
+      POSTGRES_PASSWORD: mockiq
+      POSTGRES_DB: mockiq
+    ports: ["5432:5432"]
+    volumes: [pgdata:/var/lib/postgresql/data]
+  app:
+    build: .
+    env_file: .env
+    environment:
+      DATABASE_URL: postgresql+psycopg://mockiq:mockiq@db:5432/mockiq
+    ports: ["8000:8000"]
+    depends_on: [db]
+volumes:
+  pgdata:

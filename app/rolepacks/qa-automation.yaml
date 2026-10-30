@@ -1,0 +1,48 @@
+slug: qa-automation
+title: QA / SDET
+domain: testing
+persona:
+  name: Meera
+  style: practical test lead who loves real production scenarios and asks how you would actually do it
+
+levels:
+  L1: {label: "QA engineer (0-3 yrs)", bar: "Knows test design techniques, writes reliable automated tests, can test APIs, reports bugs clearly."}
+  L2: {label: "Senior QA / SDET (3-6 yrs)", bar: "Designs test strategy for features, builds maintainable frameworks, handles flakiness and CI, reasons about risk."}
+
+stacks:
+  selenium-java: {label: "Selenium + Java", topics: [Selenium waits and synchronization, Page Object Model design, TestNG/JUnit fixtures and parallel runs]}
+  playwright: {label: "Playwright (TS/Python)", topics: [Playwright auto-waiting and locators, Fixtures and test isolation, Tracing and debugging failures]}
+  pytest: {label: "Pytest", topics: [Pytest fixtures and scopes, Parametrization, Mocking external services]}
+  api-testing: {label: "API testing (RestAssured/Postman)", topics: [Contract testing, Auth flows in API tests, Data setup and teardown for API tests]}
+
+competencies:
+  technical_depth: {description: "Depth in testing concepts and tools", anchors: {1: "Definitions only", 3: "Knows how and why", 5: "Knows internals, failure modes, alternatives"}}
+  test_strategy: {description: "Plans what to test and at which level", anchors: {1: "Random test cases", 3: "Covers functional, negative and boundary cases across levels", 5: "Risk-based strategy aligned to architecture and release goals"}}
+  automation_design: {description: "Maintainable automation frameworks", anchors: {1: "Record-and-play style", 3: "Structured with POM/fixtures", 5: "Scalable, parallel, low-flake framework with reporting"}}
+  risk_analysis: {description: "Identifies and prioritises risk", anchors: {1: "No prioritisation", 3: "Prioritises by impact", 5: "Quantifies risk and adapts plan under constraints"}}
+  debugging: {description: "Finds root causes of failures", anchors: {1: "Guesses", 3: "Systematic narrowing", 5: "Uses logs, traces and isolation expertly"}}
+  communication: {description: "Clear and concise", anchors: {1: "Hard to follow", 3: "Clear", 5: "Structured and persuasive"}}
+  ownership: {description: "Drives quality outcomes", anchors: {1: "Waits for instructions", 3: "Owns their area", 5: "Raises quality bar across team"}}
+  approach: {description: "Problem-solving approach", anchors: {1: "No approach", 3: "Reasonable approach", 5: "Optimal with reasons"}}
+  correctness: {description: "Correctness", anchors: {1: "Major errors", 3: "Minor gaps", 5: "Correct with edge cases"}}
+
+topics:
+  test-pyramid: {title: "Test pyramid and test levels", seed: "How would you split testing between unit, API and UI tests for a typical web app, and why?", key_points: ["more unit, fewer UI", "speed and cost", "API layer coverage", "contract tests"]}
+  test-design: {title: "Test design techniques", seed: "A field accepts ages 18 to 60. What test cases would you write?", key_points: ["boundary value analysis", "equivalence partitioning", "invalid types", "null/empty"]}
+  bug-lifecycle: {title: "Bug reporting and triage", seed: "You found a bug that only happens sometimes. How do you report and chase it?", key_points: ["repro steps", "environment details", "logs/screenshots", "severity vs priority"]}
+  feature-test-plan: {title: "Test plan for a feature", seed: "We're launching a checkout with UPI and cards. How would you plan testing for it?", key_points: ["scope and risks", "payment gateway mocks", "negative paths", "non-functional (performance, security)"]}
+  flaky-tests: {title: "Flaky tests in CI", seed: "Twenty percent of UI tests fail randomly on CI but pass locally. What do you do?", key_points: ["waits/synchronization", "test data isolation", "environment differences", "quarantine and fix"]}
+  release-pressure: {title: "Testing under release pressure", seed: "Release is tomorrow and 30% of regression is failing. What do you do?", key_points: ["triage by risk", "communicate to stakeholders", "go/no-go criteria"]}
+  api-testing: {title: "API testing", seed: "How would you test a REST API that creates orders?", key_points: ["status codes", "schema validation", "auth", "idempotency", "data cleanup"]}
+  strings-hashing: {title: "Coding: strings and hashing", seed: "Write a function that checks whether two strings are anagrams.", key_points: ["sorting vs counting", "O(n)", "unicode/case edge cases"]}
+  resume-claims: {title: "Your projects", seed: "Tell me about the automation framework or test effort you're most proud of.", key_points: ["own contribution", "design choices", "impact on quality"]}
+
+rounds_by_level:
+  L1:
+    - {type: FUNDAMENTALS, title: "Testing fundamentals", duration_min: 30, target_depth: 3, mandatory_topics: [test-design, test-pyramid, bug-lifecycle], competencies: {technical_depth: 0.5, test_strategy: 0.3, communication: 0.2}}
+    - {type: LANGUAGE_DEPTH, title: "Automation and tools", duration_min: 30, target_depth: 3, mandatory_topics: [api-testing], include_stack_topics: 2, competencies: {automation_design: 0.5, technical_depth: 0.3, communication: 0.2}}
+    - {type: DSA, title: "Coding", duration_min: 25, target_depth: 2, mandatory_topics: [strings-hashing], tools: [editor], competencies: {approach: 0.4, correctness: 0.4, communication: 0.2}}
+  L2:
+    - {type: TESTING_STRATEGY, title: "Test strategy", duration_min: 40, target_depth: 4, mandatory_topics: [feature-test-plan, flaky-tests, release-pressure], tools: [notes], competencies: {test_strategy: 0.4, risk_analysis: 0.35, communication: 0.25}}
+    - {type: LANGUAGE_DEPTH, title: "Framework design", duration_min: 35, target_depth: 4, mandatory_topics: [api-testing], include_stack_topics: 2, competencies: {automation_design: 0.5, debugging: 0.3, technical_depth: 0.2}}
+    - {type: PROJECT_DEEP_DIVE, title: "Your work", duration_min: 25, target_depth: 4, mandatory_topics: [resume-claims], competencies: {ownership: 0.4, technical_depth: 0.4, communication: 0.2}}
